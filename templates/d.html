@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" type="image/png"
+        href="{% static 'assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png'%}" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="{% static 'https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico'%}" />
+    <link rel="mask-icon" type="image/x-icon"
+        href="{% static 'https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg'%}"
+        color="#111" />
+
+
+
+    <title>User detail</title>
+
+
+    <!-- Css -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'main.js' %}"></script>
+
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+
+
+</head>
+
+<body translate="no">
+    <div class="container">
+        <div id="logo">
+            <h1 class="logo">hulu</h1>
+        </div>
+        {% for student in students %}
+        <div class="leftbox">
+            <nav>
+                <img src="{% static 'academics.png' %}"/>
+                <a id="profile" class="active"><img src="{% static 'profile.png'%}"/></a>
+                <a id="payment"><img src="{% static 'academics.png'%}"/></a>
+                <a id="subscription"><img src="{% static 'contact.png'%}"/></a>
+            
+            </nav>
+        </div>
+        <div class="rightbox">
+            <div class="profile">
+                <h1>Personal Info</h1>
+                <h2>Full Name</h2>
+                <p>{{student.name}}</p>
+                <h2>Date Of Birth</h2>
+                <p>{{student.dob}}</p>
+                <h2>Gender</h2>
+                <p>{{student.gender}}</p>
+                <h2>Email</h2>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                        data-cfemail="22475a434f524e4762475a434f524e470c414d4f">[email&#160;protected]</a> <button
+                        class="btn">update</button></p>
+                <h2>Password </h2>
+                <p>••••••• <button class="btn">Change</button></p>
+            </div>
+
+            <div class="payment noshow">
+                <h1>Academics Info</h1>
+                <h2>College Name</h2>
+                <p>{{student.college_name}}</p>
+                <h2>Enrollment Year</h2>
+                <p>{{student.enrollment_year}}</p>
+                <h2>Course</h2>
+                <p>{{student.course}}</p>
+                <h2>Branch</h2>
+                <p>{{student.branch}}</p>
+                <h2>Roll Number </h2>
+                <p>{{student.roll_no}}</p>
+                <h2>College Email </h2>
+                <p>{{student.college_email}}</p>
+                <h2>Current CGPA </h2>
+                <p>{{student.current_cgpa}}</p>
+                <h2>Current Backlogs </h2>
+                <p>{{student.backlog}}</p>
+                
+            </div>
+
+            <div class="subscription noshow">
+                <h1>Contacts Info</h1>
+                <h2>Personal Email</h2>
+                <p>{{student.personal_Email}}</p>
+                <h2>Student Phone Number</h2>
+                <p>{{student.phone}}</p>
+                <h2>Student Current Address</h2>
+                <p>{{student.current_address}}</p>
+                <h2>Student Permanent Address</h2>
+                <p>{{student.permanent_address}}</p>
+                <img src={{ student.pictures }}>
+                {% comment %} <img src="/media/pictures/{{ student.student_image }}" alt=""/> {% endcomment %}
+            </div>
+
+     
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>made by raaju</p> ♡
+    </footer>
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script id="rendered-js">
+        /*active button class onclick*/
+        $('nav a').click(function (e) {
+            e.preventDefault();
+            $('nav a').removeClass('active');
+            $(this).addClass('active');
+            if (this.id === !'payment') {
+                $('.payment').addClass('noshow');
+            } else
+                if (this.id === 'payment') {
+                    $('.payment').removeClass('noshow');
+                    $('.rightbox').children().not('.payment').addClass('noshow');
+                } else
+                    if (this.id === 'profile') {
+                        $('.profile').removeClass('noshow');
+                        $('.rightbox').children().not('.profile').addClass('noshow');
+                    } else
+                        if (this.id === 'subscription') {
+                            $('.subscription').removeClass('noshow');
+                            $('.rightbox').children().not('.subscription').addClass('noshow');
+                        } else
+                            if (this.id === 'privacy') {
+                                $('.privacy').removeClass('noshow');
+                                $('.rightbox').children().not('.privacy').addClass('noshow');
+                            } else
+                                if (this.id === 'settings') {
+                                    $('.settings').removeClass('noshow');
+                                    $('.rightbox').children().not('.settings').addClass('noshow');
+                                }
+        });
+    </script>
+
+
+
+</body>
+
+</html>

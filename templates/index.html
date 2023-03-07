@@ -1,0 +1,120 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Form </title>
+		<!-- Mobile Specific Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- Font-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/montserrat-font.css'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.min.css'%}">
+		<!-- Main Style Css -->
+		<link rel="stylesheet" href="{% static 'css/style.css'%}"/>
+	</head>
+	
+	<body class="form-v10">
+{% for message in messages %}
+{{message}}
+{% endfor %}
+	<div class="page-content">
+		<div class="form-v10-content">
+			<form class="form-detail" action="#" method="post" id="myform">
+				{% csrf_token %}
+				<div class="form-left">
+					<h2>Personal Infomation</h2>
+					{% comment %} Name {% endcomment %}
+					<div class="form-row">
+							<input type="text" name="name" id="first_name" class="input-text" placeholder="Enter your Name" required>
+					</div>
+					{% comment %} Gender {% endcomment %}
+					<div class="form-row">
+						<select name="gender" required>
+						    <option class="option" value="Gender">Gender</option>
+						    <option class="option" value="Male">Male</option>
+						    <option class="option" value="Female">Female</option>
+						    <option class="option" value="Others">Others</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					{% comment %} Personal email {% endcomment %}
+					<div class="form-row">
+						<input type="email" name="personal_email" class="email" id="email" placeholder="Enter your email" required>
+					</div>
+					{% comment %} phone Number {% endcomment %}
+					<div class="form-row">
+						<input type="Number" name="contact_number" class="contact_number" id="contact_number" placeholder="Enter your Contact Number" required>
+					</div>
+					{% comment %} dob {% endcomment %}
+					<div class="form-row">
+						<input type="Date" name="dob"  placeholder="Enter your date of birth" required>
+					</div>
+					{% comment %} Address {% endcomment %}
+					<div class="form-row">
+						<input type="text" name="current_address"  placeholder="Enter your Current Address" required>
+					</div>
+
+					<div class="form-row">
+						<input type="text" name="permanent_address"  placeholder="Enter your Permanent Address" required>
+					</div>
+
+					{% comment %} image {% endcomment %}
+					<div class="form-row">
+						<label>Upload your image</label><br><br>
+						<input type="file" name="student_image" required>
+					</div>
+				</div>
+				{% comment %} Academics Details {% endcomment %}
+				<div class="form-right">
+					<h2>Survey Form</h2>
+					{% comment %} college name {% endcomment %}
+					<div class="form-row">
+						<input type="text" name="college_name"  placeholder="Enter your college name" required>
+					</div>
+					{% comment %} enrollment year {% endcomment %}
+					<div class="form-row">
+						<input type="Number" name="enrollment_year"  placeholder="Enter your enrollment year" required>
+					</div>
+
+					{% comment %} Course {% endcomment %}
+					<div class="form-row">
+						<input type="text" name="course"  placeholder="Enter your Course " required>
+					</div>
+
+					{% comment %} branch {% endcomment %}
+					<div class="form-row">
+						<input type="text" name="branch"  placeholder="Enter your Branch " required>
+					</div>
+					{% comment %} roll Number {% endcomment %}
+					<div class="form-row">
+						<input type="Number" name="roll_no"  placeholder="Enter your Roll No." required>
+					</div>
+					{% comment %} college email {% endcomment %}
+					<div class="form-row">
+						<input type="email" name="college_email"  placeholder="Enter your college email" required>
+					</div>
+					{% comment %} current year CGPA {% endcomment %}
+					<div class="form-row">
+						<input type="Number" step="any" name="current_cgpa"  placeholder="Enter you Current CGPA" required>
+					</div>
+					{% comment %} backlog {% endcomment %}
+					<div class="form-row">
+						<select name="backlog" required>
+						    <option value="number"  >None</option>
+							<option value="number"   >1</option>
+						    <option value="number"   >2</option>
+						    <option value="number">3</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<input type="submit" name="submit"/>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

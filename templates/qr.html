@@ -1,0 +1,4 @@
+{% load static %}
+{% for student in students %}
+<img src={{student.qr_code.url}}>
+{% endfor %} 
